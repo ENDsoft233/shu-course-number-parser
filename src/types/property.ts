@@ -1,7 +1,7 @@
 import { BiMap } from '.';
 
 export const lessonProperties: BiMap<string> = {
-  114514: '', //unknown
+  114514: '', // unknown
   0: '预科(无学分)',
   1: '专科基础课',
   2: '专科专业课',

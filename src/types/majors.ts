@@ -260,7 +260,7 @@ export const collegeOfLisbon: BiMap<string> = {
 };
 
 export const collegeUniversal: BiMap<string> = {
-  self: '上海大学',
+  self: '',
   '74': '公共艺术技术实验教学中心',
   '80': '数学物理力学综合班(原)',
   '81': '钱伟长学院',

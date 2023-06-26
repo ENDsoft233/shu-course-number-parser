@@ -1,20 +1,20 @@
 import { BiMap } from '.';
 import * as Majors from './majors';
 
-export const colleges: BiMap<BiMap<string>> = {
-  '01': { ...Majors.collegeOfScience, ...Majors.collegeOfMechanics },
+export const colleges: BiMap<BiMap<string> | BiMap<string>[]> = {
+  '01': [Majors.collegeOfScience, Majors.collegeOfMechanics],
   '18': Majors.collegeOfMechanics,
-  '02': {
-    ...Majors.collegeOfLiberalArts,
-    ...Majors.collegeOfSocialSciences,
-    ...Majors.collegeOfCulturalHeritageAndInformationManagement,
-  },
+  '02': [
+    Majors.collegeOfLiberalArts,
+    Majors.collegeOfSocialSciences,
+    Majors.collegeOfCulturalHeritageAndInformationManagement,
+  ],
   '03': Majors.collegeOfForeignLanguages,
-  '04': {
-    ...Majors.collegeOfEconomics,
-    ...Majors.collegeOfManagement,
-    ...Majors.collegeOfCulturalHeritageAndInformationManagement,
-  },
+  '04': [
+    Majors.collegeOfEconomics,
+    Majors.collegeOfManagement,
+    Majors.collegeOfCulturalHeritageAndInformationManagement,
+  ],
   '06': Majors.collegeOfLaw,
   '07': Majors.collegeOfCommunicationAndInformationEngineering,
   '08': Majors.collegeOfComputerScienceAndTechnology,
@@ -46,3 +46,22 @@ export const colleges: BiMap<BiMap<string>> = {
   '39': Majors.collegeOfLisbon,
   '00': Majors.collegeUniversal,
 };
+
+export function getLessonCollegeOrMajor(lessonCode: string, type: 'college' | 'major'): string {
+  const search = Object.entries(colleges).map(([collegeCode, college]) => {
+    if (lessonCode.startsWith(collegeCode) || collegeCode === '00') {
+      if (college instanceof Array) {
+        for (const col of college)
+          if (Object.entries(col).some(([majorCode]) => lessonCode.substring(2, 4) === majorCode))
+            return type === 'college' ? col.self : col[lessonCode.substring(2, 4)] || '';
+      } else return type === 'college' ? college.self : college[lessonCode.substring(2, 4)] || '';
+    }
+    return '';
+  });
+  for (const result of search) {
+    if (result !== '') {
+      return result;
+    }
+  }
+  return '';
+}
