@@ -2,17 +2,21 @@
 
 ### shu-course-number-parser
 
+[![downloads](https://img.shields.io/npm/dm/shu-course-number-parser)](https://www.npmjs.com/package/koishi)
+[![npm](https://img.shields.io/npm/v/shu-course-number-parser)](https://www.npmjs.com/package/shu-course-number-parser)
+[![GitHub](https://img.shields.io/github/license/ENDsoft233/shu-course-number-parser)](https://github.com/ENDsoft233/shu-course-number-parser/blob/master/LICENSE)
+
 这个项目提供了一个用于解析上海大学课程号的 JavaScript 库，根据 《2022 级计算机工程与科学学院教学一览》 编制。
 
 ## TODO
 
-[x] 解析课程号
+- [x] 解析课程号
 
-[] 反向解析课程号
+- [ ] 反向解析课程号
 
-- [] 提供学院、专业列表
-- [] 提供课程属性列表
-- [] 返回可以匹配特定列表项的正则表达式
+- - [ ] 提供学院、专业列表
+- - [ ] 提供课程属性列表
+- - [ ] 返回可以匹配特定列表项的正则表达式
 
 ## 安装
 
