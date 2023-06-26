@@ -29,6 +29,7 @@ export const lessonProperties: BiMap<string> = {
 };
 
 export function getLessonProperty(lessonCode: string): string {
+  if (lessonCode.length !== 8) return '';
   return (
     lessonProperties[lessonCode.substring(4, 6)] ||
     lessonProperties[

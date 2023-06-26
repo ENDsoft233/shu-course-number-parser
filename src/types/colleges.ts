@@ -48,6 +48,7 @@ export const colleges: BiMap<BiMap<string> | BiMap<string>[]> = {
 };
 
 export function getLessonCollegeOrMajor(lessonCode: string, type: 'college' | 'major'): string {
+  if (lessonCode.length !== 8) return '';
   const search = Object.entries(colleges).map(([collegeCode, college]) => {
     if (lessonCode.startsWith(collegeCode) || collegeCode === '00') {
       if (college instanceof Array) {

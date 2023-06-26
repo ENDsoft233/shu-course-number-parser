@@ -7,6 +7,8 @@ test('Lesson Property Test - Read Directly', () => {
 });
 
 test('Lesson Property Test - Read by Function', () => {
+  expect(getLessonProperty('99999')).toBe('');
+
   expect(getLessonProperty('00853430')).toBe('专科、本科共同课程');
   expect(getLessonProperty('00874008')).toBe('本科公共基础课');
   expect(getLessonProperty('0830A033')).toBe('实践环节课程');
