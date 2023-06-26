@@ -12,5 +12,6 @@ test('Lesson Property Test - Read by Function', () => {
   expect(getLessonProperty('0830A033')).toBe('实践环节课程');
   expect(getLessonProperty('08305140')).toBe('本科学科基础课');
   expect(getLessonProperty('2800R807')).toBe('人文社科大类通识课');
-  expect(getLessonProperty('99999999')).toBe('');
+  expect(getLessonProperty('99999999')).toBe('其他');
+  expect(getLessonProperty('FFFFFFFF')).toBe('');
 });
