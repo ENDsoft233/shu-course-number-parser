@@ -2,7 +2,7 @@
 
 ### shu-course-number-parser
 
-[![downloads](https://img.shields.io/npm/dm/shu-course-number-parser)](https://www.npmjs.com/package/koishi)
+[![downloads](https://img.shields.io/npm/dm/shu-course-number-parser)](https://www.npmjs.com/package/shu-course-number-parser)
 [![npm](https://img.shields.io/npm/v/shu-course-number-parser)](https://www.npmjs.com/package/shu-course-number-parser)
 [![GitHub](https://img.shields.io/github/license/ENDsoft233/shu-course-number-parser)](https://github.com/ENDsoft233/shu-course-number-parser/blob/master/LICENSE)
 
