@@ -28,9 +28,11 @@ export const lessonProperties: BiMap<string> = {
   SY: '三年级研讨课',
 };
 
-export function getLessonProperty(propertyCode: string): string {
+export function getLessonProperty(lessonCode: string): string {
   return (
-    lessonProperties[propertyCode] ||
-    lessonProperties[Object.entries(lessonProperties).find(([code]) => propertyCode.startsWith(code))?.[0] || '114514']
+    lessonProperties[lessonCode.substring(4, 6)] ||
+    lessonProperties[
+      Object.entries(lessonProperties).find(([code]) => lessonCode.substring(4, 6).startsWith(code))?.[0] || '114514'
+    ]
   );
 }
