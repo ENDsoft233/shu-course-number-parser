@@ -4,9 +4,17 @@ import * as Majors from './majors';
 export const colleges: BiMap<BiMap<string>> = {
   '01': { ...Majors.collegeOfScience, ...Majors.collegeOfMechanics },
   '18': Majors.collegeOfMechanics,
-  '02': { ...Majors.collegeOfLiberalArts, ...Majors.collegeOfSocialSciences },
+  '02': {
+    ...Majors.collegeOfLiberalArts,
+    ...Majors.collegeOfSocialSciences,
+    ...Majors.collegeOfCulturalHeritageAndInformationManagement,
+  },
   '03': Majors.collegeOfForeignLanguages,
-  '04': { ...Majors.collegeOfEconomics, ...Majors.collegeOfManagement },
+  '04': {
+    ...Majors.collegeOfEconomics,
+    ...Majors.collegeOfManagement,
+    ...Majors.collegeOfCulturalHeritageAndInformationManagement,
+  },
   '06': Majors.collegeOfLaw,
   '07': Majors.collegeOfCommunicationAndInformationEngineering,
   '08': Majors.collegeOfComputerScienceAndTechnology,

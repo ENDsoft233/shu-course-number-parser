@@ -218,7 +218,7 @@ export const collegeOfMicroelectronics: BiMap<string> = {
   '05': '微电子科学与工程',
 };
 
-// 文化遗产与信息管理学院 37
+// 文化遗产与信息管理学院 37/02/04
 export const collegeOfCulturalHeritageAndInformationManagement: BiMap<string> = {
   self: '文化遗产与信息管理学院',
   '10': '档案学',
