@@ -10,7 +10,7 @@ export const collegeOfScience: BiMap<string> = {
   '06': '应用化学',
 };
 
-// 力学与工程科学学院 01/18
+// 力学与工程科学学院 01/18/35
 export const collegeOfMechanics: BiMap<string> = {
   self: '力学与工程科学学院',
   '82': '理论与应用力学',
@@ -25,7 +25,7 @@ export const collegeOfLiberalArts: BiMap<string> = {
   '60': '汉语国际教育',
 };
 
-// 社会学院 02
+// 社会学院 02/28
 export const collegeOfSocialSciences: BiMap<string> = {
   self: '社会学院',
   '09': '社会学',
@@ -48,7 +48,7 @@ export const collegeOfEconomics: BiMap<string> = {
   '15': '国际经济与贸易',
 };
 
-// 管理学院 04
+// 管理学院 04/24
 export const collegeOfManagement: BiMap<string> = {
   self: '管理学院',
   '17': '信息管理与信息系统',
@@ -171,7 +171,7 @@ export const collegeOfSydney: BiMap<string> = {
   '57': '国际经济与贸易',
 };
 
-// 马克思主义学院 16
+// 马克思主义学院 16/34
 export const collegeOfMarxism: BiMap<string> = {
   self: '马克思主义学院',
   '61': '哲学',
@@ -199,11 +199,31 @@ export const collegeOfSinoEuropeanEngineeringTechnology: BiMap<string> = {
   self: '中欧工程技术学院',
 };
 
+// 社区学院 27
+export const collegeOfResidents: BiMap<string> = {
+  self: '社区学院',
+};
+
+// 上海合作组织公共外交研究院 29
+export const collegeOfShanghaiCooperationOrganization: BiMap<string> = {
+  self: '上海合作组织公共外交研究院',
+};
+
+// MBA教育管理中心 30
+export const collegeOfMBAEducationManagementCenter: BiMap<string> = {
+  self: 'MBA教育管理中心',
+};
+
 // 音乐学院 31
 export const collegeOfMusic: BiMap<string> = {
   self: '音乐学院',
   '73': '音乐学',
   '97': '音乐表演',
+};
+
+// 上海温哥华电影学院 32
+export const collegeOfVancouverFilm: BiMap<string> = {
+  self: '上海温哥华电影学院',
 };
 
 // 钱伟长学院 33
@@ -218,12 +238,17 @@ export const collegeOfMicroelectronics: BiMap<string> = {
   '05': '微电子科学与工程',
 };
 
-// 文化遗产与信息管理学院 37/02/04
+// 文化遗产与信息管理学院 37/02/04/25
 export const collegeOfCulturalHeritageAndInformationManagement: BiMap<string> = {
   self: '文化遗产与信息管理学院',
   '10': '档案学',
   '23': '信息资源管理',
   B5: '考古学',
+};
+
+// 转化医学研究院 38
+export const collegeOfTranslationalMedicine: BiMap<string> = {
+  self: '转化医学研究院',
 };
 
 // 里斯本学院 39
