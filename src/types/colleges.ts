@@ -47,6 +47,13 @@ export const colleges: BiMap<BiMap<string> | BiMap<string>[]> = {
   '00': Majors.collegeUniversal,
 };
 
+/**
+ * returns the college or major of the courseId given
+ * @param lessonCode 8-digit course id
+ * @param type `college` returns campus name what the first and second represented or `major` returns major name what the third and fourth represented
+ * @returns `string` for the designated name
+ * @example getLessonCollegeOrMajor('0830A030', 'college') // returns '计算机工程与科学学院'
+ */
 export function getLessonCollegeOrMajor(lessonCode: string, type: 'college' | 'major'): string {
   if (lessonCode.length !== 8) return '';
   const search = Object.entries(colleges).map(([collegeCode, college]) => {

@@ -28,6 +28,12 @@ export const lessonProperties: BiMap<string> = {
   SY: '三年级研讨课',
 };
 
+/**
+ * returns the property of the courseId given
+ * @param lessonCode 8-digit course id
+ * @returns `string` for the courseId's property
+ * @example getLessonProperty('0830A030') // returns '实践环节课程'
+ */
 export function getLessonProperty(lessonCode: string): string {
   if (lessonCode.length !== 8) return '';
   return (
