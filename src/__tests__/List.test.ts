@@ -14,6 +14,17 @@ test('Colleges List Test', async () => {
   // 00864088 程序设计(C语言)
   expect(list.filter((e) => e.name === '计算机工程与科学学院')[0].regex.test('00864088')).toBeFalsy();
   expect(list.filter((e) => e.name === '')[0].regex.test('00864088')).toBeTruthy();
+
+  // 2400J015 商务礼仪
+  expect(list.filter((e) => e.name === '管理学院')[0].regex.test('2400J015')).toBeTruthy();
+
+  // 16584168 马克思主义基本原理
+  expect(list.filter((e) => e.name === '马克思主义学院')[0].regex.test('16584168')).toBeTruthy();
+  expect(list.filter((e) => e.name === '中欧工程技术学院')[0].regex.test('16584168')).toBeFalsy();
+
+  // 23584069 马克思主义基本原理
+  expect(list.filter((e) => e.name === '中欧工程技术学院')[0].regex.test('23584069')).toBeTruthy();
+  expect(list.filter((e) => e.name === '马克思主义学院')[0].regex.test('23584069')).toBeFalsy();
 });
 
 test('Properties List Test', async () => {
@@ -56,7 +67,13 @@ test('Majors List Test', async () => {
   expect(manageList.length).toBeGreaterThan(0);
   // 04175086 高级Python程序设计与算法
   expect(manageList.filter((e) => e.name === '信息管理与信息系统')[0].regex.test('04175086')).toBeTruthy();
-  expect(manageList.filter((e) => e.name === '信息管理与信息系统')[0].regex.test('24175086')).toBeFalsy();
+
+  const mechanicsList = getMajorsList('力学与工程科学学院');
+  expect(mechanicsList.length).toBeGreaterThan(0);
+  // 01824010 理论力学(1)
+  expect(mechanicsList.filter((e) => e.name === '理论与应用力学')[0].regex.test('01824010')).toBeTruthy();
+  // 18465500 工程力学(1)
+  expect(mechanicsList.filter((e) => e.name === '土木工程')[0].regex.test('18465500')).toBeTruthy();
 });
 
 test('Majors Regex With Property Test', async () => {

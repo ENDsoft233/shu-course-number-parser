@@ -174,6 +174,7 @@ export const collegeOfSydney: BiMap<string> = {
 // 马克思主义学院 16/34
 export const collegeOfMarxism: BiMap<string> = {
   self: '马克思主义学院',
+  '58': '',
   '61': '哲学',
   A5: '思想政治教育',
 };

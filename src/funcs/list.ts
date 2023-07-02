@@ -40,7 +40,7 @@ export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
         if (typeof collegesBucket[col.self] === 'undefined') {
           collegesBucket[col.self] = {
             codes: [collegeCode],
-            majors: majorCodes,
+            majors: ['00', ...majorCodes],
           };
         } else {
           collegesBucket[col.self].codes.push(collegeCode);
@@ -55,7 +55,7 @@ export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
       if (typeof collegesBucket[college.self] === 'undefined') {
         collegesBucket[college.self] = {
           codes: [collegeCode],
-          majors: majorCodes,
+          majors: ['00', ...majorCodes],
         };
       } else {
         collegesBucket[college.self].codes.push(collegeCode);
@@ -68,11 +68,7 @@ export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
       name: collegeName,
       regex: new RegExp(
         `^${college.codes.length === 1 ? college.codes[0] : `(${college.codes.join('|')})`}${
-          college.majors.length === 0
-            ? '([a-zA-Z0-9]{2})'
-            : college.majors.length === 1
-            ? college.majors[0]
-            : `(${college.majors.join('|')})`
+          college.majors.length === 1 ? '([a-zA-Z0-9]{2})' : `(${college.majors.join('|')})`
         }${property.length === 1 ? `(${property})([0-9]{1})` : `(${property})`}([0-9]{2})$`,
       ),
     });
@@ -87,15 +83,16 @@ export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
  * @returns interface `{ name: string, regex: RegExp }[]`
  */
 export function getMajorsList(college: string, property = '[a-zA-Z0-9]{2}'): QueryList[] {
-  const list: BiMap<{ college: string; major: string }> = {};
+  const list: BiMap<{ major: string }> = {};
+  const collegeCodes: string[] = [];
   Object.entries(colleges).forEach(([collegeCode, collegeObj]) => {
     if (collegeObj instanceof Array) {
       for (const col of collegeObj) {
         if (col.self === college) {
+          collegeCodes.push(collegeCode);
           Object.entries(col).forEach(([majorCode, majorName]) => {
-            if (majorCode !== 'self') {
+            if (majorCode !== 'self' && !list[majorCode]) {
               list[majorCode] = {
-                college: collegeCode,
                 major: majorName,
               };
             }
@@ -103,10 +100,10 @@ export function getMajorsList(college: string, property = '[a-zA-Z0-9]{2}'): Que
         }
       }
     } else if (collegeObj.self === college) {
+      collegeCodes.push(collegeCode);
       Object.entries(collegeObj).forEach(([majorCode, majorName]) => {
-        if (majorCode !== 'self') {
+        if (majorCode !== 'self' && !list[majorCode]) {
           list[majorCode] = {
-            college: collegeCode,
             major: majorName,
           };
         }
@@ -116,7 +113,7 @@ export function getMajorsList(college: string, property = '[a-zA-Z0-9]{2}'): Que
   return Object.entries(list).map(([majorCode, major]) => ({
     name: major.major,
     regex: new RegExp(
-      `^(${major.college})(${majorCode})${
+      `^(${collegeCodes.join('|')})(${majorCode})${
         property.length === 1 ? `(${property})([0-9]{1})` : `(${property})`
       }([0-9]{2})$`,
     ),
