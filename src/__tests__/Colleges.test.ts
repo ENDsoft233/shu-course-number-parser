@@ -1,4 +1,4 @@
-import { getLessonCollegeOrMajor } from './../types/colleges';
+import { getLessonCollegeOrMajor } from './../funcs/colleges';
 
 test('College Test', () => {
   expect(getLessonCollegeOrMajor('0830', 'college')).toBe('');

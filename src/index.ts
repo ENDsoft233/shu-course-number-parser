@@ -1,5 +1,5 @@
-import { getLessonProperty } from './types/property';
-import { getLessonCollegeOrMajor } from './types/colleges';
+import { getLessonProperty } from './funcs/property';
+import { getLessonCollegeOrMajor } from './funcs/colleges';
 
 export { getLessonCollegeOrMajor, getLessonProperty };
 

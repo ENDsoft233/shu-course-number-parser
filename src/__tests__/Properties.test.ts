@@ -1,4 +1,5 @@
-import { lessonProperties, getLessonProperty } from './../types/property';
+import { lessonProperties } from './../types/property';
+import { getLessonProperty } from './../funcs/property';
 
 test('Lesson Property Test - Read Directly', () => {
   expect(lessonProperties.A).toBe('实践环节课程');
