@@ -1,4 +1,4 @@
-import { BiMap, reverseBiMap } from '../types';
+import { BiMap, reverseBiMap } from '../types/bimap';
 const testBiMap: BiMap<string> = {
   A: 'B',
 };

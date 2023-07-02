@@ -1,4 +1,4 @@
-import { BiMap } from '.';
+import { BiMap } from './bimap';
 import * as Majors from './majors';
 
 export const colleges: BiMap<BiMap<string> | BiMap<string>[]> = {

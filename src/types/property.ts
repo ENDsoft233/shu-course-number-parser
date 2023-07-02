@@ -1,4 +1,4 @@
-import { BiMap } from '.';
+import { BiMap } from './bimap';
 
 export const lessonProperties: BiMap<string> = {
   114514: '', // unknown

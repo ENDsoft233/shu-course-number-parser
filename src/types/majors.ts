@@ -1,4 +1,4 @@
-import { BiMap } from '.';
+import { BiMap } from './bimap';
 
 // 理学院 01
 export const collegeOfScience: BiMap<string> = {
