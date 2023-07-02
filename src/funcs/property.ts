@@ -8,10 +8,5 @@ import { lessonProperties } from '../types/property';
  */
 export function getLessonProperty(lessonCode: string): string {
   if (lessonCode.length !== 8) return '';
-  return (
-    lessonProperties[lessonCode.substring(4, 6)] ||
-    lessonProperties[
-      Object.entries(lessonProperties).find(([code]) => lessonCode.substring(4, 6).startsWith(code))?.[0] || '114514'
-    ]
-  );
+  return lessonProperties[lessonCode.substring(4, 5)] || lessonProperties[lessonCode.substring(4, 6)] || '';
 }
