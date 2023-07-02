@@ -1,6 +1,7 @@
 import { QueryList, QueryListWithCode } from '../types/list';
 import { colleges } from '../types/colleges';
 import { lessonProperties } from '../types/property';
+import { BiMap } from '../types/bimap';
 
 /**
  * 获取课程属性列表
@@ -77,4 +78,47 @@ export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
     });
   });
   return list;
+}
+
+/**
+ * 获取专业列表
+ * @param college `college.name` 学院
+ * @param property `property.code` 生成正则表达式用, 课程属性, 默认匹配全部
+ * @returns interface `{ name: string, regex: RegExp }[]`
+ */
+export function getMajorsList(college: string, property = '[a-zA-Z0-9]{2}'): QueryList[] {
+  const list: BiMap<{ college: string; major: string }> = {};
+  Object.entries(colleges).forEach(([collegeCode, collegeObj]) => {
+    if (collegeObj instanceof Array) {
+      for (const col of collegeObj) {
+        if (col.self === college) {
+          Object.entries(col).forEach(([majorCode, majorName]) => {
+            if (majorCode !== 'self') {
+              list[majorCode] = {
+                college: collegeCode,
+                major: majorName,
+              };
+            }
+          });
+        }
+      }
+    } else if (collegeObj.self === college) {
+      Object.entries(collegeObj).forEach(([majorCode, majorName]) => {
+        if (majorCode !== 'self') {
+          list[majorCode] = {
+            college: collegeCode,
+            major: majorName,
+          };
+        }
+      });
+    }
+  });
+  return Object.entries(list).map(([majorCode, major]) => ({
+    name: major.major,
+    regex: new RegExp(
+      `^(${major.college})(${majorCode})${
+        property.length === 1 ? `(${property})([0-9]{1})` : `(${property})`
+      }([0-9]{2})$`,
+    ),
+  }));
 }
