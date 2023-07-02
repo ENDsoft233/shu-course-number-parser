@@ -1,4 +1,4 @@
-import { getCollegesList } from '../funcs/list';
+import { getCollegesList, getLessonPropertiesList } from '../funcs/list';
 
 test('Colleges List Test', async () => {
   const list = await getCollegesList();
@@ -16,8 +16,22 @@ test('Colleges List Test', async () => {
   expect(list.filter((e) => e.name === '')[0].regex.test('00864088')).toBeTruthy();
 });
 
+test('Properties List Test', async () => {
+  const list = getLessonPropertiesList();
+  expect(list.length).toBeGreaterThan(0);
+
+  // 08305138 面向对象程序设计A
+  expect(list.filter((e) => e.name === '本科公共基础课')[0].regex.test('08305138')).toBeFalsy();
+  expect(list.filter((e) => e.name === '本科学科基础课')[0].regex.test('08305138')).toBeTruthy();
+
+  // 00864088 程序设计(C语言)
+  expect(list.filter((e) => e.name === '本科公共基础课')[0].regex.test('00864088')).toBeTruthy();
+  expect(list.filter((e) => e.name === '本科学科基础课')[0].regex.test('00864088')).toBeFalsy();
+});
+
 test('Colleges Regex With Property Test', async () => {
-  const list = await getCollegesList('本科公共基础课');
+  const propertyList = getLessonPropertiesList();
+  const list = await getCollegesList(propertyList.filter((e) => e.name === '本科公共基础课')[0].code);
   expect(list.length).toBeGreaterThan(0);
 
   // 08305138 面向对象程序设计A

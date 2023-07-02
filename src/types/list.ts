@@ -11,3 +11,10 @@ export interface QueryList {
    */
   regex: RegExp;
 }
+
+/**
+ * A list of properties with code
+ */
+export interface QueryListWithCode extends QueryList {
+  code: string;
+}

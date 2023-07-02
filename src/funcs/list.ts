@@ -1,9 +1,26 @@
-import { QueryList } from '../types/list';
+import { QueryList, QueryListWithCode } from '../types/list';
 import { colleges } from '../types/colleges';
+import { lessonProperties } from '../types/property';
+
+/**
+ * 获取课程属性列表
+ * @returns interface `{ name: string, code: string, regex: RegExp }[]`
+ */
+export function getLessonPropertiesList(): QueryListWithCode[] {
+  const list: QueryListWithCode[] = [];
+  Object.entries(lessonProperties).forEach(([code, name]) => {
+    list.push({
+      name,
+      code,
+      regex: new RegExp(`^([a-zA-Z0-9]{4})${code}([0-9]{${4 - code.length}})$`),
+    });
+  });
+  return list;
+}
 
 /**
  * 获取学院列表
- * @param property 生成正则表达式用, 课程属性, 默认匹配全部
+ * @param property `property.code` 生成正则表达式用, 课程属性, 默认匹配全部
  * @returns interface `{ name: string, regex: RegExp }[]`
  */
 export async function getCollegesList(property = '[a-zA-Z0-9]{2}'): Promise<QueryList[]> {
