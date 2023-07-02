@@ -1,5 +1,6 @@
 import { getLessonProperty } from './funcs/property';
 import { getLessonCollegeOrMajor } from './funcs/colleges';
+export { getCollegesList, getMajorsList, getLessonPropertiesList } from './funcs/list';
 
 export { getLessonCollegeOrMajor, getLessonProperty };
 

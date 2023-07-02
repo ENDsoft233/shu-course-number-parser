@@ -38,6 +38,9 @@ test('Properties List Test', async () => {
   // 00864088 程序设计(C语言)
   expect(list.filter((e) => e.name === '本科公共基础课')[0].regex.test('00864088')).toBeTruthy();
   expect(list.filter((e) => e.name === '本科学科基础课')[0].regex.test('00864088')).toBeFalsy();
+
+  // 0830A030 计算思维实训(1)
+  expect(list.filter((e) => e.name === '实践环节课程')[0].regex.test('0830A030')).toBeTruthy();
 });
 
 test('Colleges Regex With Property Test', async () => {

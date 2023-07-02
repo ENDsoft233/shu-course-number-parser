@@ -6,6 +6,8 @@ import { BiMap } from '../types/bimap';
 /**
  * 获取课程属性列表
  * @returns interface `{ name: string, code: string, regex: RegExp }[]`
+ *
+ * @example getLessonPropertiesList().filter((e) => e.name === '实践环节课程')[0].regex.test('0830A030') // returns true
  */
 export function getLessonPropertiesList(): QueryListWithCode[] {
   const list: QueryListWithCode[] = [];
@@ -23,6 +25,8 @@ export function getLessonPropertiesList(): QueryListWithCode[] {
  * 获取学院列表
  * @param property `property.code` 生成正则表达式用, 课程属性, 默认匹配全部
  * @returns interface `{ name: string, regex: RegExp }[]`
+ *
+ * @example getCollegesList().filter((e) => e.name === '计算机工程与科学学院')[0].regex.test('08305138') // returns true
  */
 export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
   const list: QueryList[] = [];
@@ -81,6 +85,8 @@ export function getCollegesList(property = '[a-zA-Z0-9]{2}'): QueryList[] {
  * @param college `college.name` 学院
  * @param property `property.code` 生成正则表达式用, 课程属性, 默认匹配全部
  * @returns interface `{ name: string, regex: RegExp }[]`
+ *
+ * @example getMajorsList('计算机工程与科学学院').filter((e) => e.name === '计算机科学与技术')[0].regex.test('08305138') // returns true
  */
 export function getMajorsList(college: string, property = '[a-zA-Z0-9]{2}'): QueryList[] {
   const list: BiMap<{ major: string }> = {};
