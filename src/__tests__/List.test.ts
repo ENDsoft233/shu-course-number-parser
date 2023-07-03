@@ -53,6 +53,18 @@ test('Colleges Regex With Property Test', async () => {
 
   // 00864088 程序设计(C语言)
   expect(list.filter((e) => e.name === '')[0].regex.test('00864088')).toBeTruthy();
+
+  let doublePropertyCodeList = getCollegesList(propertyList.filter((e) => e.name === '二年级研讨课')[0].code);
+  expect(doublePropertyCodeList.length).toBeGreaterThan(0);
+  // 0830EY01 计算机科学进展
+  expect(
+    doublePropertyCodeList.filter((e) => e.name === '计算机工程与科学学院')[0].regex.test('0830EY01'),
+  ).toBeTruthy();
+  // 0830SY02 研究方法与前沿(计算机)
+  expect(doublePropertyCodeList.filter((e) => e.name === '计算机工程与科学学院')[0].regex.test('0830SY02')).toBeFalsy();
+  // 0418EY02 自主学习方法与应用
+  expect(doublePropertyCodeList.filter((e) => e.name === '计算机工程与科学学院')[0].regex.test('0418EY02')).toBeFalsy();
+  expect(doublePropertyCodeList.filter((e) => e.name === '管理学院')[0].regex.test('0418EY02')).toBeTruthy();
 });
 
 test('Majors List Test', async () => {
@@ -82,10 +94,26 @@ test('Majors List Test', async () => {
 test('Majors Regex With Property Test', async () => {
   const propertyList = getLessonPropertiesList();
 
-  const csList = getMajorsList('计算机工程与科学学院', propertyList.filter((e) => e.name === '本科公共基础课')[0].code);
+  let csList = getMajorsList('计算机工程与科学学院', propertyList.filter((e) => e.name === '本科公共基础课')[0].code);
   expect(csList.length).toBeGreaterThan(0);
   // 08305138 面向对象程序设计A
   expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('08305138')).toBeFalsy();
+  // 0830EY01 计算机科学进展
+  expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('0830EY01')).toBeFalsy();
+  // 08304135 高级语言程序设计
+  expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('08304135')).toBeTruthy();
+  csList = getMajorsList('计算机工程与科学学院', propertyList.filter((e) => e.name === '二年级研讨课')[0].code);
+  expect(csList.length).toBeGreaterThan(0);
+  // 0830EY01 计算机科学进展
+  expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('0830EY01')).toBeTruthy();
+  // 0830SY02 研究方法与前沿(计算机)
+  expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('0830SY02')).toBeFalsy();
+  csList = getMajorsList('计算机工程与科学学院', propertyList.filter((e) => e.name === '三年级研讨课')[0].code);
+  expect(csList.length).toBeGreaterThan(0);
+  // 0830EY01 计算机科学进展
+  expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('0830EY01')).toBeFalsy();
+  // 0830SY02 研究方法与前沿(计算机)
+  expect(csList.filter((e) => e.name === '计算机科学与技术')[0].regex.test('0830SY02')).toBeTruthy();
 
   const shuList = getMajorsList('', propertyList.filter((e) => e.name === '本科公共基础课')[0].code);
   expect(shuList.length).toBeGreaterThan(0);
