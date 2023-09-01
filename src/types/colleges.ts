@@ -44,5 +44,6 @@ export const colleges: BiMap<BiMap<string> | BiMap<string>[]> = {
   '37': Majors.collegeOfCulturalHeritageAndInformationManagement,
   '38': Majors.collegeOfTranslationalMedicine,
   '39': Majors.collegeOfLisbon,
+  '40': Majors.collegeOfFutureTechnology,
   '00': Majors.collegeUniversal,
 };
