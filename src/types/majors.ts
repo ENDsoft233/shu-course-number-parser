@@ -260,6 +260,14 @@ export const collegeOfLisbon: BiMap<string> = {
   '46': '土木工程',
 };
 
+// 未来技术学院 40
+export const collegeOfFutureTechnology: BiMap<string> = {
+  self: '未来技术学院',
+  A2: '机械电子工程',
+  B2: '人工智能',
+  B6: '机器人工程',
+};
+
 export const collegeUniversal: BiMap<string> = {
   self: '',
   '74': '公共艺术技术实验教学中心',
